@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: downstream-mithun
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: downstream-mithun
+  template:
+    metadata:
+      labels:
+        app: downstream-mithun
+      annotations:
+        instrumentation.opentelemetry.io/inject-nodejs: "true" 
+    spec:
+      containers:
+        - name: downstream-mithun
+          image: mithun100/nodejs-downstream:latest
+          ports:
+            - containerPort: 5555
+            
+

@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  upstream:
+    build:
+      context: ./upstream
+    ports:
+      - '4444:4444'
+  downstream:
+    build:
+      context: ./downstream
+    ports:
+      - '5555:5555'
+
